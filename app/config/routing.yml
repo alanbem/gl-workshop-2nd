@@ -1,0 +1,4 @@
+workshop:
+    resource: "@WorkshopBundle/Resources/config/routing.xml"
+    prefix:   /
+
