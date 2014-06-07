@@ -14,6 +14,7 @@ namespace GoldenLine\WorkshopBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * SimpleFormType class
@@ -27,8 +28,11 @@ class SimpleFormType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', 'text', array());
-        $builder->add('password', 'password', array('always_empty' => true));
+        $builder->add('name', 'number', array(
+                'required' => false,
+                'constraints' => array(new NotBlank(),
+            )));
+        $builder->add('password', 'repeated', array('type' => 'password'));
         $builder->add(
             'gender',
             'choice',
@@ -40,6 +44,13 @@ class SimpleFormType extends AbstractType
 
         $builder->add('save', 'submit');
         $builder->add('not_save', 'submit');
+    }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => 'GoldenLine\WorkshopBundle\Entity\Human',
+        ]);
     }
 
     /**
