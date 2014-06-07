@@ -14,6 +14,7 @@ namespace GoldenLine\WorkshopBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
@@ -28,7 +29,7 @@ class SimpleFormType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', 'number', array(
+        $builder->add('name', 'text', array(
                 'required' => false,
                 'constraints' => array(new NotBlank(),
             )));
@@ -36,9 +37,9 @@ class SimpleFormType extends AbstractType
         $builder->add(
             'gender',
             'choice',
-            array('choices' => array('m' => 'Male', 'f' => 'Female'), 'multiple' => true, 'expanded' => false)
+            array('choices' => array('m' => 'Male', 'f' => 'Female'), 'multiple' => true, 'expanded' => false,'constraints' => array(new NotBlank()),)
         );
-        $builder->add('birth_at', 'date', array('widget' => 'text'));
+        $builder->add('birth_at', 'date', array('constraints' => array(new NotBlank(), new Date())));
 
         $builder->add('address', new AddressType());
 

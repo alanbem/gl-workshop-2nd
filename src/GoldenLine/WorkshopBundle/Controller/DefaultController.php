@@ -15,10 +15,7 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            var_dump($form->getData());
-            exit;
-            $save = $form->get('save')->isClicked();
-            $notsave = $form->get('not_save')->isClicked();
+            $data = $form->getData();
         }
 
 
