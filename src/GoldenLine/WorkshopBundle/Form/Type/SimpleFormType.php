@@ -42,15 +42,6 @@ class SimpleFormType extends AbstractType
         $builder->add('not_save', 'submit');
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $resolver->setDefaults(
-            [
-                'csrf_provider' => new MagicCsrfProvider(),
-            ]
-        );
-    }
-
     /**
      * Returns the name of this type.
      *
