@@ -31,6 +31,7 @@ class SimpleFormType extends AbstractType
         $builder->add('gender', 'choice', array('choices' => array('m' => 'Male', 'f' => 'Female'), 'multiple' => true, 'expanded' => false));
         $builder->add('birth_at', 'date', array('widget' => 'text'));
         $builder->add('save', 'submit');
+        $builder->add('not_save', 'submit');
     }
 
     /**
