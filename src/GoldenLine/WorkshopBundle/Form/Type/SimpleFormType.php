@@ -13,6 +13,7 @@ namespace GoldenLine\WorkshopBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * SimpleFormType class
@@ -28,13 +29,26 @@ class SimpleFormType extends AbstractType
     {
         $builder->add('name', 'text', array());
         $builder->add('password', 'password', array('always_empty' => true));
-        $builder->add('gender', 'choice', array('choices' => array('m' => 'Male', 'f' => 'Female'), 'multiple' => true, 'expanded' => false));
+        $builder->add(
+            'gender',
+            'choice',
+            array('choices' => array('m' => 'Male', 'f' => 'Female'), 'multiple' => true, 'expanded' => false)
+        );
         $builder->add('birth_at', 'date', array('widget' => 'text'));
 
         $builder->add('address', new AddressType());
 
         $builder->add('save', 'submit');
         $builder->add('not_save', 'submit');
+    }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(
+            [
+                'csrf_provider' => new MagicCsrfProvider(),
+            ]
+        );
     }
 
     /**
