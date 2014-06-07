@@ -15,26 +15,22 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * SimpleFormType class
+ * AddressType class
  *
  * @author Alan Gabriel Bem <alan.bem@gmail.com>
  */
-class SimpleFormType extends AbstractType
+class AddressType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', 'text', array());
-        $builder->add('password', 'password', array('always_empty' => true));
-        $builder->add('gender', 'choice', array('choices' => array('m' => 'Male', 'f' => 'Female'), 'multiple' => true, 'expanded' => false));
-        $builder->add('birth_at', 'date', array('widget' => 'text'));
-
-        $builder->add('address', new AddressType());
-
-        $builder->add('save', 'submit');
-        $builder->add('not_save', 'submit');
+        $builder->add('street');
+        $builder->add('building_number');
+        $builder->add('flat_number');
+        $builder->add('zip_code');
+        $builder->add('city');
     }
 
     /**
@@ -44,7 +40,7 @@ class SimpleFormType extends AbstractType
      */
     public function getName()
     {
-        return 'simple_form';
+        return 'address';
     }
 }
 
