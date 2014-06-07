@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new GoldenLine\WorkshopBundle\WorkshopBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
+            new Sylius\Bundle\FlowBundle\SyliusFlowBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

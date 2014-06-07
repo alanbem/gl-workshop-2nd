@@ -7,4 +7,6 @@
     <route id="workshop_homepage" pattern="/">
         <default key="_controller">WorkshopBundle:Default:index</default>
     </route>
+
+    <import resource="@SyliusFlowBundle/Resources/config/routing.yml"/>
 </routes>

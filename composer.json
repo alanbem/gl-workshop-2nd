@@ -22,7 +22,8 @@
         "braincrafted/bootstrap-bundle": "~2.0",
         "jquery/jquery": "1.10.2",
         "twbs/bootstrap": "3.0.*",
-        "leafo/lessphp": "dev-master"
+        "leafo/lessphp": "dev-master",
+        "sylius/flow-bundle": "v0.9.0"
     },
     "repositories": [
         {
